@@ -12,8 +12,8 @@ const { NotImplementedError } = require('../extensions/index.js');
  * 
  */
 function getSeason(date) {
-  if (!date) throw new Error('Unable to determine the time of year!');
-  if (typeof date === 'string' || typeof date.getMonth !== 'function') throw new Error('Invalid date!');
+  if (!date) return 'Unable to determine the time of year!';
+  if (typeof date === 'string' || typeof date.getMonth !== 'function' || date.hasOwnProperty('getMonth')) throw new Error('Invalid date!');
 
 
   const month = date.getMonth();
@@ -40,7 +40,7 @@ function getSeason(date) {
   return season;
 }
 
-console.log(getSeason(new Date(1994, 1, 2, 3, 4, 5)))
+//console.log(getSeason())
 
 module.exports = {
   getSeason
